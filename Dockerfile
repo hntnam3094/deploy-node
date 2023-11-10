@@ -10,10 +10,6 @@ RUN npm install --production --silent
 
 COPY . .
 
-RUN adduser -D -u 501 appuser -G dialout
-
-RUN chown -R appuser:dialout /app
-
-USER appuser
+USER node
 
 CMD ["pm2-runtime", "ecosystem.config.js", "--env", "production"]
